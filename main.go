@@ -4,21 +4,20 @@ import (
 	"bufio"
 	"os"
 	"github.com/mikhail-nikitin/go-robot/menu"
+	"github.com/mikhail-nikitin/go-robot/robot"
 )
 
 func main() {
-	// robot := NewRobot()
+	r := robot.New()
 	m := menu.New()
 
-	// TODO: implement all or some commands
+	m.AddItem("on", "Turns the Robot on", &robot.TurnOnCommand{r})
+	m.AddItem("off", "Turns the Robot off", &robot.TurnOffCommand{r})
 
-	// m.AddItem("on", "Turns the Robot on", ???)
-	// m.AddItem("off", "Turns the Robot off", ???)
-
-	// m.AddItem("up", "Makes the Robot walk up", ???)
-	// m.AddItem("down", "Makes the Robot walk down", ???)
-	// m.AddItem("left", "Makes the Robot walk left", ???)
-	// m.AddItem("right", "Makes the Robot walk right", ???)
+	m.AddItem("up", "Makes the Robot walk up", &robot.MoveSpecificDirectionCommand{r, robot.UP})
+	m.AddItem("down", "Makes the Robot walk down", &robot.MoveSpecificDirectionCommand{r, robot.DOWN})
+	m.AddItem("left", "Makes the Robot walk left", &robot.MoveSpecificDirectionCommand{r,robot.LEFT})
+	m.AddItem("right", "Makes the Robot walk right", &robot.MoveSpecificDirectionCommand{r, robot.RIGHT})
 
 	// m.AddItem("horse_moving", "Makes the Robot walk like horse", ???)
 
