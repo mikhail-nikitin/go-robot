@@ -33,12 +33,8 @@ func (r *Robot) TurnOff() {
 func (r *Robot) Walk(direction int64) {
 	if r.turnedOn {
 		r.direction = direction
-		directions := make(map[int64]string)
-		directions[UP] = "up"
-		directions[DOWN] = "down"
-		directions[LEFT] = "left"
-		directions[RIGHT] = "right"
-		fmt.Printf("Walking %v\n", directions[direction])
+
+		fmt.Printf("Walking %v\n", directionToString(direction))
 	} else {
 		fmt.Println("The robot should be turned on first")
 	}
@@ -55,6 +51,33 @@ func (r *Robot) Stop() {
 	} else {
 		fmt.Println("The robot should be turned on first")
 	}
+}
+
+func (r *Robot) Status() {
+	direction := "staying still"
+	if r.direction != NO_DIRECTION {
+		direction = "walking " + directionToString(r.direction)
+	}
+
+	state := "off"
+	if r.turnedOn {
+		state = "on"
+	}
+	fmt.Printf("turned %s, %s\n", state, direction)
+}
+
+func directionToString(direction int64) string {
+	directions := make(map[int64]string)
+	directions[UP] = "up"
+	directions[DOWN] = "down"
+	directions[LEFT] = "left"
+	directions[RIGHT] = "right"
+
+	str, ok := directions[direction]
+	if !ok {
+		str = "nowhere"
+	}
+	return str
 }
 
 func New() *Robot {

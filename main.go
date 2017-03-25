@@ -21,8 +21,8 @@ func main() {
 
 	// m.AddItem("horse_moving", "Makes the Robot walk like horse", ???)
 
-	// m.AddItem("status", "Prints Robot status (turned on/off, walk direction)", ???)
-	// m.AddItem("stop", "Stops the Robot", ???)
+	m.AddItem("status", "Prints Robot status (turned on/off, walk direction)", &robot.StatusCommand{r})
+	m.AddItem("stop", "Stops the Robot", &robot.StopCommand{r})
 
 	helpCommand := &menu.ShowHelpCommand{m}
 	m.AddItem("help", "Show instructions", helpCommand)

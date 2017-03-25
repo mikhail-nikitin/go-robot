@@ -24,3 +24,19 @@ type MoveSpecificDirectionCommand struct {
 func (c *MoveSpecificDirectionCommand) Execute() {
 	c.Robot.Walk(c.Direction)
 }
+
+type StatusCommand struct {
+	Robot *Robot
+}
+
+func (c *StatusCommand) Execute() {
+	c.Robot.Status()
+}
+
+type StopCommand struct {
+	Robot *Robot
+}
+
+func (c *StopCommand) Execute() {
+	c.Robot.Stop()
+}
