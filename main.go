@@ -19,7 +19,7 @@ func main() {
 	m.AddItem("left", "Makes the Robot walk left", &robot.MoveSpecificDirectionCommand{r,robot.LEFT})
 	m.AddItem("right", "Makes the Robot walk right", &robot.MoveSpecificDirectionCommand{r, robot.RIGHT})
 
-	// m.AddItem("horse_moving", "Makes the Robot walk like horse", ???)
+	m.AddItem("horse_moving", "Makes the Robot walk like horse", robot.NewHorseMovingCommand(r))
 
 	m.AddItem("status", "Prints Robot status (turned on/off, walk direction)", &robot.StatusCommand{r})
 	m.AddItem("stop", "Stops the Robot", &robot.StopCommand{r})
